@@ -1,5 +1,5 @@
 <?php
-// v1 by IK4LZH
+// v1 by IK4LZH, usage: cd /$HOME/Documents/MLDX_Logs; php cabrillo.php > /$HOME/Downloads/hadx.cbr
 $mycontest="hadx 2020";
 $mycall="IK4LZH";
 
