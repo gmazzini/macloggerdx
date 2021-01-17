@@ -2,12 +2,23 @@
 
 // cd /$HOME/Documents/MLDX_Logs
 $mycontest="hadx 2020";
+$mycall="IK4LZH";
+
+echo "START-OF-LOG: 3.0\n";
+echo "CONTEST: xxx\n";
+echo "CALLSIGN: $mycall\n";
+echo "CLAIMED-SCORE: xxx\n"
+echo "OPERATORS: $mycall\n";
+echo "NAME: xxx\n";
+echo "ADDRESS: xxx\n";
+echo "ADDRESS: xxx\n";
 
 $db=new SQLite3("MacLoggerDX.sql");
 $mm=array("USB"=>"PH","LSB"=>"PH","CW"=>"CW","FT8"=>"DG","MFSK"=>"DG");
 
 $res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call,rst_sent,rst_received,srx,srx_numeric,stx,stx_numeric FROM qso_table_v007 where contest_id='$mycontest' order by qso_start");
 while ($row = $res->fetchArray()) {
+ if($row["my_call"]!=$mycall)continue;
  echo "QSO: "; // label 4c+s
  $freq=(int)($row["tx_frequency"]*1000);
  if($freq>30000)$freq=(int)($freq/1000); 
