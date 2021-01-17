@@ -1,14 +1,12 @@
 <?php
-
-// cd /$HOME/Documents/MLDX_Logs
+// v1 by IK4LZH
 $mycontest="hadx 2020";
 $mycall="IK4LZH";
-// v1 by IK4LZH
 
 echo "START-OF-LOG: 3.0\n";
 echo "CONTEST: xxx\n";
 echo "CALLSIGN: $mycall\n";
-echo "CLAIMED-SCORE: xxx\n"
+echo "CLAIMED-SCORE: xxx\n";
 echo "OPERATORS: $mycall\n";
 echo "NAME: xxx\n";
 echo "ADDRESS: xxx\n";
