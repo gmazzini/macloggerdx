@@ -3,6 +3,7 @@
 // cd /$HOME/Documents/MLDX_Logs
 $mycontest="hadx 2020";
 $mycall="IK4LZH";
+// v1 by IK4LZH
 
 echo "START-OF-LOG: 3.0\n";
 echo "CONTEST: xxx\n";
