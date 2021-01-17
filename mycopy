@@ -1,5 +1,4 @@
-cd /Users/gmazzini/Desktop/domotica
-rm -rf domotic
-git clone https://github.com/gmazzini/domotic
-cp domotic/config.php .
-cp domotic/casa.php .
+cd /$HOME/Documents/MLDX_Logs
+rm -rf macloggerdx
+git clone https://github.com/gmazzini/macloggerdx
+cp macloggerdx/cabrillo.php .
