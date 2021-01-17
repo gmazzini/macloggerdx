@@ -1,0 +1,4 @@
+cd $HOME/Documents/MLDX_Logs
+sqlite3 MacLoggerDX.sql
+delete from qso_table_v007 where pk IN (SELECT max(pk) FROM qso_table_v007 GROUP BY call,qso_start,tx_frequency HAVING COUNT(*) > 1);
+.exit
