@@ -102,15 +102,16 @@ for($i=0;$i<$j;$i++){
   }
   else $myt[$qq]=$i;
 }
+
 function findcall($a){
-  global $myt;
+  global $myt,$zz;
   $call=strtoupper($a);
   $lc=strlen($call);
   $s=-1;
   for($q=1;$q<=$lc;$q++){
     if(isset($myt[substr($call,0,$q)]))$s=$myt[substr($call,0,$q)];
   }
-  return $s;
+  return $zz[$s];
 }
 
 ?>
