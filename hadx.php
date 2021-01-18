@@ -30,5 +30,6 @@ while ($row = $res->fetchArray()) {
 echo array_sum($qso)." qso\n";
 echo array_sum($point)." point\n";
 echo array_sum($mult)." mult\n";
+echo array_sum($point)*array_sum($mult)." score\n";
 
 ?>
