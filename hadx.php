@@ -6,20 +6,18 @@ $mycall="IK4LZH";
 $db=new SQLite3("MacLoggerDX.sql");
 $mm=array("USB"=>"PH","LSB"=>"PH","CW"=>"CW","FT8"=>"DG","MFSK"=>"DG");
 
-$res = $db->query("SELECT call,band_tx,dxcc_id,mode FROM qso_table_v007 where contest_id='$mycontest' limit 20");
+$res = $db->query("SELECT call,band_tx,dxcc_id,mode FROM qso_table_v007 where contest_id='$mycontest'");
 while ($row = $res->fetchArray()) {
+  
   $myid=$row["band_tx"]."-".$mm[$row["mode"]]."-".$row["call"];
-  echo $myid."\n";
   if(!isset($qso[$myid]))$qso[$myid]=1;
  
   $myid=$row["band_tx"]."-".$row["dxcc_id"];
-  echo $myid."\n";
   if(!isset($mult[$myid]))$mult[$myid]=1;
 
 }
 
 echo array_sum($qso)." qso\n";
 echo array_sum($mult)." mult\n";
-
 
 ?>
