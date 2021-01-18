@@ -113,9 +113,4 @@ function findcall($a){
   return $s;
 }
 
-// from here 
-$call="IK4LZH";
-$mys=findcall($call);
-print_r($zz[$mys]);
-
 ?>
