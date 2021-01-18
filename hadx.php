@@ -6,8 +6,6 @@ $mycall="IK4LZH";
 include("country.php");
 $mys=findcall($mycall);
 $mycont=$mys["cont"];
-print_r($mys);
-echo "\n";
 
 $db=new SQLite3("../MacLoggerDX.sql");
 $mm=array("USB"=>"PH","LSB"=>"PH","CW"=>"CW","FT8"=>"DG","MFSK"=>"DG");
@@ -16,9 +14,7 @@ $res = $db->query("SELECT call,band_tx,mode FROM qso_table_v007 where contest_id
 while ($row = $res->fetchArray()) {
   
   $mys=findcall($row["call"]);
-  print_r($mys);
-  echo "\n";
-  
+   
   $myid=$row["band_tx"]."-".$mm[$row["mode"]]."-".$row["call"];
   if(!isset($qso[$myid]))$qso[$myid]=1;
   if($mys["base"]=="HA")$pp=10;
