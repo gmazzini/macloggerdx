@@ -26,6 +26,7 @@ while ($row = $res->fetchArray()) {
   if(!isset($mult[$myid]))$mult[$myid]=1;
   if($mys["base"]=="HA"){
     $myid=$row["band_tx"]."--".$row["stx"];
+    echo "$call $myid\n";
     if(!isset($mult[$myid]))$mult[$myid]=1;
   }
 
