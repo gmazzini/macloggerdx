@@ -14,6 +14,7 @@ $res = $db->query("SELECT call,band_tx,mode FROM qso_table_v007 where contest_id
 while ($row = $res->fetchArray()) {
   
   $mys=findcall($row["call"]);
+  print_r($mys);
   
   $myid=$row["band_tx"]."-".$mm[$row["mode"]]."-".$row["call"];
   if(!isset($qso[$myid]))$qso[$myid]=1;
