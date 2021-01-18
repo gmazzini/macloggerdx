@@ -23,7 +23,9 @@ while ($row = $res->fetchArray()) {
   if(!isset($point[$myid]))$point[$myid]=$pp;
  
   $myid=$row["band_tx"]."-".$mys["base"];
-  if(!isset($mult[$myid]))$mult[$myid]=1;
+  if($mys["base"]!="HA"){
+    if(!isset($mult[$myid]))$mult[$myid]=1;
+  }
   if($mys["base"]=="HA" && isset($row["srx"])){
     $myid=$row["band_tx"]."--".$row["srx"];
     echo "$call $myid\n";
