@@ -3,6 +3,8 @@
 $mycontest="hadx 2020";
 $mycall="IK4LZH";
 
+include("country.php");
+
 $db=new SQLite3("MacLoggerDX.sql");
 $mm=array("USB"=>"PH","LSB"=>"PH","CW"=>"CW","FT8"=>"DG","MFSK"=>"DG");
 
