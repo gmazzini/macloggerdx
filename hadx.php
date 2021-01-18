@@ -15,6 +15,7 @@ while ($row = $res->fetchArray()) {
   
   $mys=findcall($row["call"]);
   print_r($mys);
+  echo "\n";
   
   $myid=$row["band_tx"]."-".$mm[$row["mode"]]."-".$row["call"];
   if(!isset($qso[$myid]))$qso[$myid]=1;
