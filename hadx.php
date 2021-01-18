@@ -4,7 +4,6 @@ $mycontest="hadx 2020";
 $mycall="IK4LZH";
 
 include("country.php");
-// from here 
 $mys=findcall($mycall);
 print_r($zz[$mys]);
 
