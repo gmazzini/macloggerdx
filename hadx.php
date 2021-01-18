@@ -24,6 +24,10 @@ while ($row = $res->fetchArray()) {
  
   $myid=$row["band_tx"]."-".$mys["base"];
   if(!isset($mult[$myid]))$mult[$myid]=1;
+  if($mys["base"]=="HA"){
+    $myid=$row["band_tx"]."--".$row["stx"];
+    if(!isset($mult[$myid]))$mult[$myid]=1;
+  }
 
 }
 
