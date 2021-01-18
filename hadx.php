@@ -6,10 +6,14 @@ $mycall="IK4LZH";
 $db=new SQLite3("MacLoggerDX.sql");
 $mm=array("USB"=>"PH","LSB"=>"PH","CW"=>"CW","FT8"=>"DG","MFSK"=>"DG");
 
-$res = $db->query("SELECT call,band_tx,dxcc_id,mode FROM qso_table_v007 where contest_id='$mycontest' limit 1");
+$res = $db->query("SELECT call,band_tx,dxcc_id,mode FROM qso_table_v007 where contest_id='$mycontest' limit 4");
 while ($row = $res->fetchArray()) {
-
- printf_r($row);
+ 
+ $myid=$row["call"]."-".$row["band_tx"]."-".$mm[$row["mode"]];
+ echo $myid."\n";
+ if(!isset($qso[$myid]))$qso[$myid]=1;
+ else $qso[$myid]++;
+ 
  echo "\n";
 }
 
