@@ -1,4 +1,3 @@
 cd /$HOME/Documents/MLDX_Logs
 rm -rf macloggerdx
 git clone https://github.com/gmazzini/macloggerdx
-cp macloggerdx/cabrillo.php .
