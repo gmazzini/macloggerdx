@@ -1,7 +1,7 @@
 <?php
 // v1 by IK4LZH, usage: cd /$HOME/Documents/MLDX_Logs; php macloggerdx/cabrillo.php > /$HOME/Downloads/hadx.cbr
-$mycontest="ContestID";
-$mycall="YourCallSign";
+$mycontest="hadx 2020"; // contest id label
+$mycall="IK4LZH"; // youcall
 
 echo "START-OF-LOG: 3.0\n";
 echo "CONTEST: xxx\n";
