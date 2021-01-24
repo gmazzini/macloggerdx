@@ -1,5 +1,5 @@
 <?php
-// v1 by IK4LZH, usage: cd /$HOME/Documents/MLDX_Logs; php cabrillo.php > /$HOME/Downloads/hadx.cbr
+// v1 by IK4LZH, usage: cd /$HOME/Documents/MLDX_Logs; php macloggerdx/cabrillo.php > /$HOME/Downloads/hadx.cbr
 $mycontest="ContestID";
 $mycall="YourCallSign";
 
