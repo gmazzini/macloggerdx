@@ -4,4 +4,4 @@
 
 Example of use starting from $HOME/Documents/MLDX_Logs
 with both macloggerdx and ik4lzh gitthub repository from such a place
-php macloggerdx/cabrillo.php > prova.cbr; cd ik4lzh; cat ../prova.cbr | php ubadx.php skip; cd ..
+php macloggerdx/cabrillo.php | php ik4lzh/ubadx.php skip
