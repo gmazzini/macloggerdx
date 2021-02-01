@@ -1,6 +1,6 @@
 <?php
 // v0 20210201 by IK4LZH
-$xx="20201220";
+$xx="20201226";
 $flag=10;
 
 include("dati.php");
