@@ -13,9 +13,7 @@ while ($row = $res->fetchArray()) {
   
   mysqli_query($conn,$aux);
   echo "$aux\n";
-
 }
-
 $db->close();
 mysqli_close($conn);
 ?>
