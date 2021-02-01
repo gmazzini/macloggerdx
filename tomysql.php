@@ -1,6 +1,7 @@
 <?php
 // v0 20210201 by IK4LZH
 $xx="20201220";
+include("../dati.php");
 
 $conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
 $zz=mktime(0,0,0,substr($xx,4,2),substr($xx,6,2),substr($xx,0,4));
