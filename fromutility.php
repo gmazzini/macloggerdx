@@ -1,7 +1,4 @@
 <?php
-
-<?php
-
 include("dati.php");
 include("ik4lzh/utility.php");
 
