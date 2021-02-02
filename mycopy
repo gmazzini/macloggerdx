@@ -1,3 +1,5 @@
 cd /$HOME/Documents/MLDX_Logs
 rm -rf macloggerdx
 git clone https://github.com/gmazzini/macloggerdx
+rm -rf ik4lzh
+git clone https://github.com/gmazzini/ik4lzh
