@@ -3,13 +3,12 @@
 // cat pippo | php macloggerdx/graphtodo.php
 
 $fp=fopen("php://stdin","r");
-
-
-while( $line = fgets( $f ) ) {
+while($line=fgets($fp)){
   echo $line;
 }
 
-fclose( $f );
+fclose($fp);
+exit(1);
 
 echo "P2\n";
 echo "# by GM\n";
