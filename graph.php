@@ -1,5 +1,5 @@
 <?php
-// cat pippo | php macloggerdx/graph.php
+// cat out30 | php macloggerdx/graph.php | convert pgm:- z30.png
 
 ini_set("memory_limit","512M");
 
