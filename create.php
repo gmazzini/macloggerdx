@@ -1,7 +1,5 @@
 <?php
-
-
-// php macloggerdx/create.php 20 2019-01-01 2021-02-14
+// php macloggerdx/create.php 20 2019-01-01 2021-01-31
 
 $myband=$argv[1];
 $mystart=$argv[2];
