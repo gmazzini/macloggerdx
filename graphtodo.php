@@ -1,5 +1,16 @@
 <?php
 
+// cat pippo | php macloggerdx/graphtodo.php
+
+$fp=fopen("php://stdin","r");
+
+
+while( $line = fgets( $f ) ) {
+  echo $line;
+}
+
+fclose( $f );
+
 echo "P2\n";
 echo "# by GM\n";
 include("dati.php");
