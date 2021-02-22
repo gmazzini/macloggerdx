@@ -1,47 +1,54 @@
 <?php
-
 // cat pippo | php macloggerdx/graphtodo.php
 
-$fp=fopen("php://stdin","r");
-while($line=fgets($fp)){
-  echo $line;
-}
-
-fclose($fp);
-exit(1);
+ini_set("memory_limit","512M");
 
 echo "P2\n";
 echo "# by GM\n";
-include("dati.php");
-$conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
+$mytop=5;
 
-$ddbegin=new DateTime("2019-01-01");
-$ddend=new DateTime("2021-02-01");
-
-$totdays=$ddend->diff($ddbegin)->format("%a");
-
-echo "1000 $totdays\n";
-echo "20\n";
-
-for($i=$ddbegin;$i<=$ddend;$i->modify('+1 day')){
-  $v=$i->format("Ymd");
-
-  for($z=1;$z<=40;$z++){
- 
-    for($j=0;$j<24;$j++){
-      $hhbegin=sprintf("%02d0000",$j);
-      $hhend=sprintf("%02d5959",$j);
-      $res=mysqli_query($conn,"select count(callsign) from qso where mode='FT8' and data='$v' and cqzone=$z and time>=$hhbegin and time<=$hhend and band=20");
-      $row=mysqli_fetch_assoc($res);
-      $nqso=$row["count(callsign)"];
-      echo "$nqso ";
+$fp=fopen("php://stdin","r");
+while($line=fgets($fp)){
+  $qq=str_getcsv($line);
+  for($cq=1;$cq<=40;$cq++){
+    for($hh=0;$hh<24;$hh++){
+      $j=$hh+($cq-1)*24;
+      $myqso["$qq[0].$cq.$hh"]=$qq[$j*3+1];
+      $mysent["$qq[0].$cq.$hh"]=$qq[$j*3+2];
+      $myrcvd["$qq[0].$cq.$hh"]=$qq[$j*3+3];
     }
-    echo "20 ";
+  }
+}
+
+// $maxqso=max($myqso);
+
+$minkey=min(array_keys($myqso));
+$maxkey=max(array_keys($myqso));
+$d1b=new DateTime(substr($minkey,0,8));
+$d1e=new DateTime(substr($maxkey,0,8));
+$mydiff=$d1e->diff($d1b);
+$totdays=$mydiff->format("%a");
+$mymm=(($mydiff->y)*12)+($mydiff->m);
+
+$aux=$totdays+$mymm;
+echo "1000 $aux\n";
+echo "$mytop\n";
+
+$ov="";
+for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
+  $v=$i->format("Ymd");
+  if(substr($v,0,6)!=$ov){
+    $ov=substr($v,0,6);
+    for($j=0;$j<1000;$j++)echo "$mytop ";
+    echo "\n";
+  }
+  for($cq=1;$cq<=40;$cq++){
+    for($hh=0;$hh<24;$hh++){
+      echo $myqso["$v.$cq.$hh"]." ";
+    }
+    echo "$mytop ";
   }
   echo "\n";
 }
-
-mysqli_close($conn);
-
-
+fclose($fp);
 ?>
