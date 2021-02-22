@@ -1,5 +1,5 @@
 <?php
-// cat pippo | php macloggerdx/graphtodo.php
+// cat pippo | php macloggerdx/graph.php
 
 ini_set("memory_limit","512M");
 
