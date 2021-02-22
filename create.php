@@ -12,9 +12,6 @@ $conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
 $ddbegin=new DateTime($mystart);
 $ddend=new DateTime($myend);
 
-$totdays=$ddend->diff($ddbegin)->format("%a");
-echo "# $mband $mystart $myend $totdays ... V1 20200222 by IK4LZH\n";
-
 for($i=$ddbegin;$i<=$ddend;$i->modify('+1 day')){
   $v=$i->format("Ymd");
   echo "$v";
