@@ -10,7 +10,7 @@ $myend=$argv[3];
 include("dati.php");
 $conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
 $ddbegin=new DateTime($mystart);
-$ddend=new DateTime($myen);
+$ddend=new DateTime($myend);
 
 $totdays=$ddend->diff($ddbegin)->format("%a");
 echo "# $mband $mystart $myend $totdays ... V1 20200222 by IK4LZH\n";
