@@ -33,9 +33,9 @@ $mymm=(($mydiff->y)*12)+($mydiff->m);
 $aux=$totdays+$mymm+10;
 $ttxx=1030;
 switch($type){
-  case 1: $mytop=5; $mybase=0; break;
-  case 2: $mytop=35; $mybase=25; break;
-  case 3: $mytop=35; $mybase=25; break;
+  case 1: $mytop=5; $mybase=0; $mybkp=0; break;
+  case 2: $mytop=35; $mybase=25; $mybkp=10; break;
+  case 3: $mytop=35; $mybase=25; $mybkp=10; break;
 }
 
 echo "$ttxx $aux\n";
@@ -83,7 +83,7 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
         echo "0 "; 
       }
       else if($aux>100){
-        echo "0 ";
+        echo "$mybkp ";
       }
       else {
         $aux=$aux+$mybase;
