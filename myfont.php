@@ -53,22 +53,22 @@ function mys($xqq,$hlen,$vlen){
   if($hss<0||$vss<0)return NULL;
 
   $mr=10;
-  for($y=0;$y<$vss/2;$y++){
+  for($y=0;$y<floor($vss/2);$y++){
     $rr[$mr]=str_pad("",$hlen,"0");
     $mr++;
   }
   for($j=0;$j<$vqq;$j++){
     for($i=0;$i<7;$i++){
-      $rr[$mr+$i]=str_pad("",$sqq[$j]/2,"0");
+      $rr[$mr+$i]=str_pad("",floor($sqq[$j]/2),"0");
       for($x=0;$x<$lqq[$j];$x++){
         $rr[$mr+$i].=$myf[$qq[$j][$x]][$i]."0";
       }
-      $rr[$mr+$i].=str_pad("",$sqq[$j]-$sqq[$j]/2,"0");
+      $rr[$mr+$i].=str_pad("",$sqq[$j]-floor($sqq[$j]/2),"0");
     }
     $rr[$mr+7]=str_pad("",$hlen,"0");
     $mr+=8;
   }
-  for($y=0;$y<$vss-$vss/2;$y++){
+  for($y=0;$y<$vss-floor($vss/2);$y++){
     $rr[$mr]=str_pad("",$hlen,"0");
     $mr++;
   }
