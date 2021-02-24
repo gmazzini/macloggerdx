@@ -78,8 +78,14 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
   for($cq=1;$cq<=40;$cq++){
     for($hh=0;$hh<24;$hh++){
       $aux=$mydata["$v.$cq.$hh"];
-      if($aux==-1000)echo "0 ";
-      if($aux>100)echo ((int)$mytop/2)." ";
+      if($aux==-1000){
+        echo "0 "; 
+        continue;
+      }
+      if($aux>100){
+        echo ((int)$mytop/2)." ";
+        continue;
+      }
       $aux=$aux+$mybase;
       echo min($mytop,$aux)." ";
     }
