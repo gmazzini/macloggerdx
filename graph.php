@@ -21,8 +21,6 @@ while($line=fgets($fp)){
   }
 }
 
-// $maxqso=max($myqso);
-
 $minkey=min(array_keys($myqso));
 $maxkey=max(array_keys($myqso));
 $d1b=new DateTime(substr($minkey,0,8));
@@ -72,9 +70,7 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
   $nnr++;
 
   for($cq=1;$cq<=40;$cq++){
-    for($hh=0;$hh<24;$hh++){
-      echo $myqso["$v.$cq.$hh"]." ";
-    }
+    for($hh=0;$hh<24;$hh++)echo min($mytop,$myqso["$v.$cq.$hh"])." ";
     echo "$mytop ";
   }
   echo "\n";
