@@ -1,28 +1,28 @@
 <?php
-// cat out30 | php macloggerdx/graph.php | convert pgm:- z30.png
+// cat out30 | php macloggerdx/graph.php 1 | convert pgm:- z30.png
+// 1=qso 2=sent 3=rcvd
 
 ini_set("memory_limit","512M");
 include("myfont.php");
+$type=$argv[1];
 
 echo "P2\n";
 echo "# by GM\n";
-$mytop=5;
-
 $fp=fopen("php://stdin","r");
 while($line=fgets($fp)){
   $qq=str_getcsv($line);
   for($cq=1;$cq<=40;$cq++){
     for($hh=0;$hh<24;$hh++){
       $j=$hh+($cq-1)*24;
-      $myqso["$qq[0].$cq.$hh"]=$qq[$j*3+1];
-      $mysent["$qq[0].$cq.$hh"]=$qq[$j*3+2];
-      $myrcvd["$qq[0].$cq.$hh"]=$qq[$j*3+3];
+      $aux=$qq[$j*3+1];
+      if($aux==0)$mydata["$qq[0].$cq.$hh"]=-1000;
+      else $mydata["$qq[0].$cq.$hh"]=$qq[$j*3+$type];
     }
   }
 }
 
-$minkey=min(array_keys($myqso));
-$maxkey=max(array_keys($myqso));
+$minkey=min(array_keys($mydata));
+$maxkey=max(array_keys($mydata));
 $d1b=new DateTime(substr($minkey,0,8));
 $d1e=new DateTime(substr($maxkey,0,8));
 $mydiff=$d1e->diff($d1b);
@@ -31,6 +31,12 @@ $mymm=(($mydiff->y)*12)+($mydiff->m);
 
 $aux=$totdays+$mymm+10;
 $ttxx=1030;
+switch($type){
+  case 1: $mytop=5; $mybase=0; break;
+  case 2: $mytop=35; $mybase=25; break;
+  case 3: $mytop=35; $mybase=25; break;
+}
+
 echo "$ttxx $aux\n";
 echo "$mytop\n";
 
@@ -70,7 +76,13 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
   $nnr++;
 
   for($cq=1;$cq<=40;$cq++){
-    for($hh=0;$hh<24;$hh++)echo min($mytop,$myqso["$v.$cq.$hh"])." ";
+    for($hh=0;$hh<24;$hh++){
+      $aux=$mydata["$v.$cq.$hh"];
+      if($aux==-1000)echo "0 ";
+      if($aux>100)echo ((int)$mytop/2)." ";
+      $aux=$aux+$mybase;
+      echo min($mytop,$aux)." ";
+    }
     echo "$mytop ";
   }
   echo "\n";
