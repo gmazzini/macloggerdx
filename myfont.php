@@ -75,7 +75,4 @@ function mys($xqq,$hlen,$vlen){
 
   return $rr;
 }
-
-print_r(mys(["CIAO A TUTTI","TI VOGLIO","TANTO BENE"],78,28));
-
 ?>
