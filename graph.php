@@ -82,6 +82,9 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
       if($aux==-1000){
         echo "0 "; 
       }
+      if($aux>100){
+        echo "0 ";
+      }
       else {
         $aux=$aux+$mybase;
         echo min($mytop,$aux)." ";
