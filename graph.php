@@ -5,6 +5,7 @@
 ini_set("memory_limit","512M");
 include("myfont.php");
 $type=$argv[1];
+$mym=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 
 echo "P2\n";
 echo "# by GM\n";
