@@ -89,6 +89,7 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
       else {
         $aux=$aux+$mybase;
         $aux=min($mytop,$aux);
+        $aux=max(0,$aux);
         echo "0 $aux 0 ";
       }
     }
