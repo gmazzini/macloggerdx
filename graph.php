@@ -18,7 +18,7 @@ while($line=fgets($fp)){
       $j=$hh+($cq-1)*24;
       $aux=$qq[$j*3+1];
       if($aux==0)$mydata["$qq[0].$cq.$hh"]=-1000;
-      else $mydata["$qq[0].$cq.$hh"]=(int)$qq[$j*3+$type];
+      else $mydata["$qq[0].$cq.$hh"]=$qq[$j*3+$type];
     }
   }
 }
