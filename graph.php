@@ -70,7 +70,7 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
   }
 
   for($x=0;$x<29;$x++){
-    if($oox[$nnr+10][$x]=="1")echo "$mytop $mytop $mytop ";
+    if($oox[$nnr+10][$x]=="1")echo "$mytop 0 0 ";
     else echo "0 0 0 ";
   }
   echo "$mytop $mytop $mytop ";
@@ -83,12 +83,12 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
         echo "0 0 0 "; 
       }
       else if($aux>100){
-        echo "$mybkp $mybkp $mybkp ";
+        echo "0 $mybkp 0 ";
       }
       else {
         $aux=$aux+$mybase;
         $aux=min($mytop,$aux);
-        echo "$aux $aux $aux ";
+        echo "0 $aux 0 ";
       }
     }
     echo "$mytop $mytop $mytop ";
