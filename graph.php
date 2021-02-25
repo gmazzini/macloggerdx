@@ -33,9 +33,9 @@ $mymm=(($mydiff->y)*12)+($mydiff->m);
 $aux=$totdays+$mymm+10;
 $ttxx=1030;
 switch($type){
-  case 1: $mytop=5; $mybase=0; $mybkp=0; break;
-  case 2: $mytop=35; $mybase=25; $mybkp=10; break;
-  case 3: $mytop=35; $mybase=25; $mybkp=10; break;
+  case 1: $mytop=5; $mybase=0; $mybkp=0; $mygrid=2; break;
+  case 2: $mytop=35; $mybase=25; $mybkp=10; $mygrid=20; break;
+  case 3: $mytop=35; $mybase=25; $mybkp=10; $mygrid=20; break;
 }
 
 echo "$ttxx $aux\n";
@@ -53,7 +53,7 @@ for($y=10;$y<19;$y++){
       if($oo[$cq][$y][$i]=="1")echo "$mytop 0 0 ";
       else echo "0 0 0 ";
     }
-    echo "$mytop $mytop $mytop ";
+    echo "$mygrid $mygrid $mygrid ";
   }
   echo "\n";
 }
@@ -65,7 +65,7 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
     $ov=substr($v,0,6);
     $nnr=0;
     $oox=mys([$mym[(int)substr($v,4,2)-1],substr($v,0,4)],29,31);
-    for($j=0;$j<$ttxx;$j++)echo "$mytop $mytop $mytop ";
+    for($j=0;$j<$ttxx;$j++)echo "$mygrid $mygrid $mygrid ";
     echo "\n";
   }
 
@@ -73,7 +73,7 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
     if($oox[$nnr+10][$x]=="1")echo "$mytop 0 0 ";
     else echo "0 0 0 ";
   }
-  echo "$mytop $mytop $mytop ";
+  echo "$mygrid $mygrid $mygrid ";
   $nnr++;
 
   for($cq=1;$cq<=40;$cq++){
@@ -91,7 +91,7 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
         echo "0 $aux 0 ";
       }
     }
-    echo "$mytop $mytop $mytop ";
+    echo "$mygrid $mygrid $mygrid ";
   }
   echo "\n";
 }
