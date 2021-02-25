@@ -1,4 +1,5 @@
 <?php
+// v5 20210225 IK4LZH
 // cat out30 | php macloggerdx/graph.php 1 | convert ppm:- z30.png
 // 1=qso 2=sent 3=rcvd
 
