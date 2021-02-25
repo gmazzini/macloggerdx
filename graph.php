@@ -50,7 +50,7 @@ for($y=10;$y<19;$y++){
   echo "$mytop $mytop $mytop ";
   for($cq=1;$cq<=40;$cq++){
     for($i=0;$i<24;$i++){
-      if($oo[$cq][$y][$i]=="1")echo "$mytop $mytop $mytop ";
+      if($oo[$cq][$y][$i]=="1")echo "$mytop 0 0 ";
       else echo "0 0 0 ";
     }
     echo "$mytop $mytop $mytop ";
