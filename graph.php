@@ -98,7 +98,7 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
         $aux=$aux+$mybase;
         $aux=min($mytop,$aux);
         $aux=max(0,$aux);
-        if($type==4){
+        if($type==5){
           $aux=$aux*8;
           $xx=$mytop*(1-abs(floor($aux/60)%2-1));
           if($aux<60)echo "$mytop $xx 0 ";
