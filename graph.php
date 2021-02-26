@@ -1,7 +1,7 @@
 <?php
-// v5 20210225 IK4LZH
+// v6 20210226 IK4LZH
 // cat out30 | php macloggerdx/graph.php 1 | convert ppm:- z30.png
-// 1=qso 2=sent 3=rcvd
+// 1=qso 2=sent 3=rcvd 4=sent-rcvd
 
 ini_set("memory_limit","512M");
 include("myfont.php");
@@ -18,7 +18,14 @@ while($line=fgets($fp)){
       $j=$hh+($cq-1)*24;
       $aux=$qq[$j*3+1];
       if($aux==0)$mydata["$qq[0].$cq.$hh"]=-1000;
-      else $mydata["$qq[0].$cq.$hh"]=$qq[$j*3+$type];
+      else {
+        switch($type){
+          case 1: $mydata["$qq[0].$cq.$hh"]=$qq[$j*3+1]; break;
+          case 2: $mydata["$qq[0].$cq.$hh"]=$qq[$j*3+2]; break;
+          case 3: $mydata["$qq[0].$cq.$hh"]=$qq[$j*3+3]; break;
+          case 4: $mydata["$qq[0].$cq.$hh"]=$qq[$j*3+2]-$qq[$j*3+3]; break;
+        }
+      }
     }
   }
 }
@@ -37,6 +44,7 @@ switch($type){
   case 1: $mytop=5; $mybase=0; $mybkp=0; $mygrid=2; break;
   case 2: $mytop=35; $mybase=26; $mybkp=10; $mygrid=20; break;
   case 3: $mytop=35; $mybase=26; $mybkp=10; $mygrid=20; break;
+  case 4: $mytop=30; $mybase=15; $mybkp=10; $mygrid=20; break;  
 }
 
 echo "$ttxx $aux\n";
@@ -90,7 +98,17 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
         $aux=$aux+$mybase;
         $aux=min($mytop,$aux);
         $aux=max(0,$aux);
-        echo "0 $aux 0 ";
+        if($type==4){
+          $aux=$aux*8;
+          $xx=$mytop*(1-abs(floor($aux/60)%2-1));
+          if($aux<60)echo "$mytop $xx 0 ";
+          else if($aux<120)echo "$xx $mytop 0 ";
+          else if($aux<180)echo "0 $mmytop $xx ";
+          else if($aux<240)echo "0 $xx $mytop ";
+          else if($aux<300)echo "$xx 0 $mytop ";
+          else echo "$mytop 0 $xx ";
+        }
+        else echo "0 $aux 0 ";
       }
     }
     echo "$mygrid $mygrid $mygrid ";
