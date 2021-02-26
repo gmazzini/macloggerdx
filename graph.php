@@ -98,12 +98,12 @@ for($i=$d1b;$i<=$d1e;$i->modify('+1 day')){
         $aux=$aux+$mybase;
         $aux=min($mytop,$aux);
         $aux=max(0,$aux);
-        if($type==5){
+        if($type==4){
           $aux=$aux*8;
           $xx=$mytop*(1-abs(floor($aux/60)%2-1));
           if($aux<60)echo "$mytop $xx 0 ";
           else if($aux<120)echo "$xx $mytop 0 ";
-          else if($aux<180)echo "0 $mmytop $xx ";
+          else if($aux<180)echo "0 $mytop $xx ";
           else if($aux<240)echo "0 $xx $mytop ";
           else if($aux<300)echo "$xx 0 $mytop ";
           else echo "$mytop 0 $xx ";
