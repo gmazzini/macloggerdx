@@ -12,6 +12,7 @@ while ($row = $res->fetchArray()) {
  if($row["my_call"]!=$mycall)continue;
  $aux=$row["call"]; echo "<call:".strlen($aux).">".$aux;
  $aux=date("Ymd",$row["qso_start"]); echo "<qso_date:".strlen($aux).">".$aux;
+ $aux=date("Hi",$row["qso_start"]); echo "<time_on:".strlen($aux).">".$aux;
  echo "<eor>\n";
 
  
