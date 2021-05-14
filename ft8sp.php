@@ -6,6 +6,7 @@ $myfrom="20210101"; // from date YYYYMMDD
 
 include("utility.php");
 $fromdate=mktime(0,0,0,(int)substr($myfrom,4,2),(int)substr($myfrom,6,2),(int)substr($myfrom,0,4));
+echo "<PROGRAMID:6>IK4LZH<EOH>\n";
 
 $db=new SQLite3("MacLoggerDX.sql");
 
