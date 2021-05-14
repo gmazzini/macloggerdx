@@ -3,7 +3,7 @@
 // usage: cd /$HOME/Documents/MLDX_Logs; php macloggerdx/ft8sp.php > /$HOME/Downloads/ft8sp.cbr
 $mycall="IK4LZH"; // youcall
 $myfrom="20210505"
-$fromdate=mktime(0,0,0,(int)substr($myfrom,4,2)),(int)substr($myfrom,6,2)),(int)substr($myfrom,0,4)));
+$fromdate=mktime(0,0,0,(int)substr($myfrom,4,2),(int)substr($myfrom,6,2),(int)substr($myfrom,0,4));
 
 $db=new SQLite3("MacLoggerDX.sql");
 
