@@ -4,7 +4,7 @@
 $mycall="IK4LZH"; // youcall
 $myfrom="20210505";
 
-include("/$HOME/Documents/MLDX_Logs/ik4lzh/utility.php");
+include("utility.php");
 $fromdate=mktime(0,0,0,(int)substr($myfrom,4,2),(int)substr($myfrom,6,2),(int)substr($myfrom,0,4));
 
 $db=new SQLite3("MacLoggerDX.sql");
