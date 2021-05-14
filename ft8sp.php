@@ -13,6 +13,8 @@ $res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call,rst_sent,rst_
 while ($row = $res->fetchArray()) {
  if($row["my_call"]!=$mycall)continue;
  if($row["mode"]!="FT8" && $row["mode"]!="MFSK")continue;
+ $mys=findcall($row["call"]);
+ if($mys["base"]!="SP")continue;
  $aux=$row["call"]; echo "<CALL:".strlen($aux).">".$aux;
  $aux=date("Ymd",$row["qso_start"]); echo "<QSO_START:".strlen($aux).">".$aux;
  $aux=date("Hi",$row["qso_start"]); echo "<TIME_ON:".strlen($aux).">".$aux;
