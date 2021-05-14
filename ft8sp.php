@@ -16,6 +16,8 @@ while ($row = $res->fetchArray()) {
  $aux=$row["mode"]; echo "<MODE:".strlen($aux).">".$aux;
  $aux=floor($row["tx_frequency"]); echo "<BAND:".strlen($aux).">".$aux;
  $aux=$row["tx_frequency"]; echo "<FREQ:".strlen($aux).">".$aux;
+ $aux=$row["rst_sent"]; echo "<RST_SENT:".strlen($aux).">".$aux;
+ $aux=$row["rst_received"]; echo "<RST_RCVD:".strlen($aux).">".$aux;
  
  echo "<eor>\n";
 
