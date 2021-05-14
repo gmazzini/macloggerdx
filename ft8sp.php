@@ -10,11 +10,12 @@ $db=new SQLite3("MacLoggerDX.sql");
 $res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call,rst_sent,rst_received FROM qso_table_v007 where qso_start>=$fromdate order by qso_start");
 while ($row = $res->fetchArray()) {
  if($row["my_call"]!=$mycall)continue;
- $aux=$row["call"]; echo "<call:".strlen($aux).">".$aux;
- $aux=date("Ymd",$row["qso_start"]); echo "<qso_date:".strlen($aux).">".$aux;
- $aux=date("Hi",$row["qso_start"]); echo "<time_on:".strlen($aux).">".$aux;
- $aux=$row["mode"]; echo "<mode:".strlen($aux).">".$aux;
- $aux=floor($row["tx_frequency"]); echo "<band:".strlen($aux).">".$aux;
+ $aux=$row["call"]; echo "<CALL:".strlen($aux).">".$aux;
+ $aux=date("Ymd",$row["qso_start"]); echo "<QSO_START:".strlen($aux).">".$aux;
+ $aux=date("Hi",$row["qso_start"]); echo "<TIME_ON:".strlen($aux).">".$aux;
+ $aux=$row["mode"]; echo "<MODE:".strlen($aux).">".$aux;
+ $aux=floor($row["tx_frequency"]); echo "<BAND:".strlen($aux).">".$aux;
+ $aux=$row["tx_frequency"]; echo "<FREQ:".strlen($aux).">".$aux;
  
  echo "<eor>\n";
 
