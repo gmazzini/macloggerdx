@@ -20,15 +20,7 @@ while ($row = $res->fetchArray()) {
  $aux=$row["tx_frequency"]; echo "<FREQ:".strlen($aux).">".$aux;
  $aux=$row["rst_sent"]; echo "<RST_SENT:".strlen($aux).">".$aux;
  $aux=$row["rst_received"]; echo "<RST_RCVD:".strlen($aux).">".$aux;
- 
- echo "<eor>\n";
-
- //call:5>KG0KG<band:3>80M<mode:3>SSB<qso_date:8>20200311<time_on:4>1904<eor>
-
- 
- 
- 
- 
+ echo "<eor>\n"; 
 }
 
 $db->close();
