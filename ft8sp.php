@@ -2,7 +2,7 @@
 // v1 by IK4LZH 20210514
 // usage: cd /$HOME/Documents/MLDX_Logs; php macloggerdx/ft8sp.php > /$HOME/Downloads/ft8sp.cbr
 $mycall="IK4LZH"; // youcall
-$fromdate="2021-05-05";
+$fromdate="2020-05-05";
 
 $db=new SQLite3("MacLoggerDX.sql");
 
