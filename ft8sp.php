@@ -13,7 +13,7 @@ while ($row = $res->fetchArray()) {
  $aux=date("Ymd",$row["qso_start"]); echo "<qso_date:".strlen($aux).">".$aux;
  $aux=date("Hi",$row["qso_start"]); echo "<time_on:".strlen($aux).">".$aux;
  $aux=$row["mode"]; echo "<mode:".strlen($aux).">".$aux;
- $aux=floor($row["tx_frequency"]/1000); echo "<band:".strlen($aux).">".$aux;
+ $aux=floor($row["tx_frequency"]); echo "<band:".strlen($aux).">".$aux;
  
  echo "<eor>\n";
 
