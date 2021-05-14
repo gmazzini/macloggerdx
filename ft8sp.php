@@ -6,7 +6,7 @@ $fromdate="2020-05-05";
 
 $db=new SQLite3("MacLoggerDX.sql");
 
-$res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call,rst_sent,rst_received FROM qso_table_v007 where qso_start>='$fromdate' order by qso_start");
+$res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call,rst_sent,rst_received FROM qso_table_v007 where date(qso_start) >= date('$fromdate') order by qso_start");
 while ($row = $res->fetchArray()) {
  if($row["my_call"]!=$mycall)continue;
  $aux=$row["call"]; echo "<call:".strlen($aux).">".$aux;
