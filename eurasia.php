@@ -33,7 +33,7 @@ while ($row = $res->fetchArray()) {
  printf("%6s ",$mygrid);
  printf("%-13s ",$row["call"]);
  printf("%3s ",$row["rst_received"]);
- printf("%6s",$row["grid"]);
+ printf("%6s",strtoupper($row["grid"]));
  echo "\n";
 }
 
