@@ -1,7 +1,9 @@
 <?php
 // v1 by IK4LZH, usage: cd /$HOME/Documents/MLDX_Logs; php macloggerdx/eurasia.php > /$HOME/Downloads/eurasia.cbr
 $mycall="IK4LZH"; // youcall
-$mydate="2022-02-05";
+$mydate="2022/02/05";
+$from=strtotime("$mydate 00:00:00");
+$to=strtotime("$mydate 23:59:59");
 
 echo "START-OF-LOG: 3.0\n";
 echo "CONTEST: xxx\n";
@@ -14,9 +16,7 @@ echo "ADDRESS: xxx\n";
 $db=new SQLite3("MacLoggerDX.sql");
 $mm=array("USB"=>"PH","LSB"=>"PH","CW"=>"CW","FT8"=>"DG","MFSK"=>"DG");
 
-DA FINIRE
-
-$res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call FROM qso_table_v007 where qso_start>='2022-02-05 06:00:00' order by qso_start");
+$res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call FROM qso_table_v007 where qso_start>=$from and qso_start<=$to order by qso_start");
 while ($row = $res->fetchArray()) {
  if($row["my_call"]!=$mycall)continue;
  echo "QSO: "; // label 4c+s
