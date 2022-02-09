@@ -2,8 +2,8 @@
 // v1 by IK4LZH, usage: cd /$HOME/Documents/MLDX_Logs; php macloggerdx/eurasia.php > /$HOME/Downloads/eurasia.cbr
 $mycall="IK4LZH"; // youcall
 $mydate="2022/02/05";
-$from=strtotime("$mydate 00:00:00");
-$to=strtotime("$mydate 23:59:59");
+$from=strtotime("$mydate 00:06:00");
+$to=strtotime("$mydate 18:00:00");
 
 echo "START-OF-LOG: 3.0\n";
 echo "CONTEST: xxx\n";
