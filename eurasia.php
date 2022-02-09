@@ -2,6 +2,7 @@
 // v1 by IK4LZH, usage: cd /$HOME/Documents/MLDX_Logs; php macloggerdx/eurasia.php > /$HOME/Downloads/eurasia.cbr
 $mycall="IK4LZH"; // youcall
 $mydate="2022/02/05";
+$mygrid="JN54QM";
 $from=strtotime("$mydate 00:06:00");
 $to=strtotime("$mydate 18:00:00");
 
@@ -29,8 +30,10 @@ while ($row = $res->fetchArray()) {
  echo date("Y-m-d Hi",$date)." ";
  printf("%-13s ",$row["my_call"]);
  printf("%3s ",$row["rst_sent"]);
+ printf("%6s ",$mygrid);
  printf("%-13s ",$row["call"]);
  printf("%3s ",$row["rst_received"]);
+ printf("%6s",$row["grid"]);
  echo "\n";
 }
 
