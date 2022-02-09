@@ -17,7 +17,7 @@ echo "ADDRESS: xxx\n";
 $db=new SQLite3("MacLoggerDX.sql");
 $mm=array("USB"=>"PH","LSB"=>"PH","CW"=>"CW","FT8"=>"DG","MFSK"=>"DG");
 
-$res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call,grid,rst_sent FROM qso_table_v007 where qso_start>=$from and qso_start<=$to order by qso_start");
+$res = $db->query("SELECT call,tx_frequency,mode,qso_start,my_call,grid,rst_sent,rst_received FROM qso_table_v007 where qso_start>=$from and qso_start<=$to order by qso_start");
 while ($row = $res->fetchArray()) {
  if($row["my_call"]!=$mycall)continue;
  echo "QSO: ";
