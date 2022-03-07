@@ -19,8 +19,8 @@ while($row=mysqli_fetch_assoc($res)){
     $email=$ret->Callsign->email;
     $cqzone=$ret->Callsign->cqzone;
     $ituzone=$ret->Callsign->ituzone;
-    mysqli_query($conn,"update qso set dxcc=$dxcc,grid='$grid',email='$email',cqzone=$cqzone,ituzone=$ituzone where callsign='$mycall'");
-    echo "update qso set dxcc=$dxcc,grid='$grid',email='$email',cqzone=$cqzone,ituzone=$ituzone where callsign='$mycall'\n";
+    mysqli_query($conn,"update qso set dxcc=$dxcc,grid='$grid',email='$email',cqzone=$cqzone,ituzone=$ituzone,flag=$flag where callsign='$mycall'");
+    echo "update qso set dxcc=$dxcc,grid='$grid',email='$email',cqzone=$cqzone,ituzone=$ituzone,flag=$flag where callsign='$mycall'\n";
   }
 }
 
