@@ -10,7 +10,8 @@ $conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
 
 $res=mysqli_query($conn,"select distinct callsign from qso where flag=$flag");
 while($row=mysqli_fetch_assoc($res)){
-  $mycall=strtok($row["callsign"]," ");
+  $ret=explode(" ",$row["callsign"]);
+  $mycall=$ret[0];
   $f2=file_get_contents("http://xmldata.qrz.com/xml/current/?s=$key;callsign=$mycall");
   $ret=simplexml_load_string($f2);
   if(!isset($ret->Session->Error)){
