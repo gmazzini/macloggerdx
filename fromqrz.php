@@ -1,7 +1,7 @@
 <?php
 
 include("dati.php");
-$flag=10;
+$flag=20;
 
 $f1=file_get_contents("http://xmldata.qrz.com/xml/current/?username=$qrzusername;password=$qrzpassword;agent=gm01");
 $ret=simplexml_load_string($f1);
@@ -18,8 +18,8 @@ while($row=mysqli_fetch_assoc($res)){
   $email=$ret->Callsign->email;
   $cqzone=$ret->Callsign->cqzone;
   $ituzone=$ret->Callsign->ituzone;
-  mysqli_query($conn,"update qso set dxcc=$dxcc,grid='$grid',email='$email',cqzone=$cqzone,ituzone=$ituzone,flag=$flag where callsign='$mycall'");
-  echo "update qso set dxcc=$dxcc,grid='$grid',email='$email',cqzone=$cqzone,ituzone=$ituzone,flag=$flag where callsign='$mycall'\n";
+  mysqli_query($conn,"update qso set dxcc=$dxcc,grid='$grid',email='$email',cqzone=$cqzone,ituzone=$ituzone where callsign='$mycall'");
+  echo "update qso set dxcc=$dxcc,grid='$grid',email='$email',cqzone=$cqzone,ituzone=$ituzone where callsign='$mycall'\n";
 
 }
 
