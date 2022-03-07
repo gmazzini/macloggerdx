@@ -1,7 +1,7 @@
 <?php
-// v0 20210201 by IK4LZH
-$xx="20201226";
-$flag=10;
+// v1 20210201 by IK4LZH
+$xx="20220305";
+$flag=21;
 
 include("dati.php");
 $conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
