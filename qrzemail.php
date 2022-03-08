@@ -1,5 +1,4 @@
 <?php
-// php macloggerdx/qrzmail.php > q4
 
 include("dati.php");
 $conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
