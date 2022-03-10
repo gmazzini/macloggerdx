@@ -19,7 +19,7 @@ if($cc<$limit)$limit=$cc;
 for($a=0;$a<$limit;$a++){
   $call=$vv[$a]["call"];
   echo $call.",".$vv[$a]["email"]."\n";
-//  mysqli_query($conn,"update qso set qrzmail=2 where callsign='$call'");
+  mysqli_query($conn,"update qso set qrzmail=2 where callsign='$call'");
 }
 
 mysqli_close($conn);
