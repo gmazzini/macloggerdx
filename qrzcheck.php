@@ -3,19 +3,13 @@
 include("dati.php");
 $conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
 
-$res=mysqli_query($conn,"select callsign,email from qso where qrzmail=0 and length(email)>5 group by callsign");
-$cc=0;
+$res=mysqli_query($conn,"select callsign from qso where qrzmail=0 group by callsign");
 while($row=mysqli_fetch_assoc($res)){
   $ret=explode(" ",$row["callsign"]);
-  $vv[$cc]["call"]=$ret[0];
-  $vv[$cc]["email"]=$row["email"];
-  $cc++;
-}
-
-shuffle($vv);
-
-for($a=0;$a<$cc;$a++){
-  echo $a.",".$vv[$a]["call"].",".$vv[$a]["email"]."\n";
+  $call=$ret[0];
+  $res1=mysqli_query($conn,"select count(*) from qso where qrzmail>0 and callsign='$call'");
+  $row1=mysqli_fetch_assoc($res1);
+  print_r($row1);
 }
 
 mysqli_close($conn);
