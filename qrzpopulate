@@ -11,8 +11,9 @@ uu=`grep wc_summary dd1 | awk -F'"' '{print $2}'`; curl -s -L "$uu" > dd2
 cat dd2 | sed -e 's/<a/\n/g' -e 's/<\/a>/\n/g' | grep href > dd3
 cat dd3 | awk -F'"' '{split($6,a," ");if(index($4,"db//")==0 && length(a[3])>0){split($4,b,"/");print b[5] "," $4 "," a[3] "," a[4] "," $8;}}' > dd4
 
-
-
+cat dd4 | awk -F"," '{print "INSERT INTO qrz (callsign) VALUES (\x27"$1"\x27);"}' > dd5
+echo "INSERT INTO qrz (callsign) VALUES ('IK4LZH');" > dd5
+cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
 
 
 ?>
