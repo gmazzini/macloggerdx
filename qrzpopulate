@@ -19,6 +19,7 @@ cat dd6| mysql -h $myhost -u $myuser -p$mypasswd qso > dd7
 
 cat dd7 | while read cc; do
 
+  echo $cc
   curl -s -L -H $hh https://www.qrz.com/lookup/$cc > dd1
   uu=`grep wc_summary dd1 | awk -F'"' '{print $2}'`; curl -s -L "$uu" > dd2
   cat dd2 | sed -e 's/<a/\n/g' -e 's/<\/a>/\n/g' | grep href > dd3
