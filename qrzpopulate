@@ -27,7 +27,11 @@ tail -n +2 dd7 | while read cc; do
 
   cat dd4 | awk -F"," '{print "REPLACE INTO qrz (callsign) VALUES (\x27"$1"\x27);"}' > dd5
   cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
-  
+ 
+ # manca dire se ha weblog o no
+ # manca settare il inqso
+ # bisogna capire quante volte deve essere reiterata questa funzione
+ 
   ff=`grep -w IK4LZH dd4 | wc -l`
   if [ $ff -ne 0 ]; then
     echo "... IK4LZH present"
@@ -37,5 +41,5 @@ tail -n +2 dd7 | while read cc; do
   
   echo -e "REPLACE INTO qrz (callsign,checked) VALUES (\x27"$cc"\x27,1);" > dd5
   cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
-
+ 
 done
