@@ -31,11 +31,11 @@ tail -n +2 dd7 | while read cc; do
   ff=`grep -w IK4LZH dd4 | wc -l`
   if [ $ff -ne 0 ]; then
     echo "... IK4LZH present"
-    echo "REPLACE INTO qrz (callsign,outlist) VALUES (\x27"$cc"\x27,1);" > dd5
+    echo -e "REPLACE INTO qrz (callsign,outlist) VALUES (\x27"$cc"\x27,1);" > dd5
     cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
   fi
   
-  echo "REPLACE INTO qrz (callsign,checked) VALUES (\x27"$cc"\x27,1);" > dd5
+  echo -e "REPLACE INTO qrz (callsign,checked) VALUES (\x27"$cc"\x27,1);" > dd5
   cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
 
 done
