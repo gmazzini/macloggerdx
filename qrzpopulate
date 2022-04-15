@@ -1,11 +1,11 @@
 #!/bin/bash
 
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-cc="IK4LZH"
 hh="User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36"
 cat dati.php | grep "=" | sed -e 's/\$//g' -e 's/;//g' > dd0
 . dd0
 
+cc="IK4LZH"
 curl -s -L -H $hh https://www.qrz.com/lookup/$cc > dd1
 uu=`grep wc_summary dd1 | awk -F'"' '{print $2}'`; curl -s -L "$uu" > dd2
 cat dd2 | sed -e 's/<a/\n/g' -e 's/<\/a>/\n/g' | grep href > dd3
@@ -13,3 +13,7 @@ cat dd3 | awk -F'"' '{split($6,a," ");if(index($4,"db//")==0 && length(a[3])>0){
 
 cat dd4 | awk -F"," '{print "REPLACE INTO qrz (callsign,inlist) VALUES (\x27"$1"\x27,1);"}' > dd5
 cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
+
+echo "SELECT callsign FROM qrz WHERE checked=0;" > dd6
+cat dd6| mysql -h $myhost -u $myuser -p$mypasswd qso > dd7
+
