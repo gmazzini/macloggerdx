@@ -34,5 +34,8 @@ cat dd7 | while read cc; do
     echo "REPLACE INTO qrz (callsign,outlist) VALUES (\x27"$cc"\x27,1);" > dd5
     cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
   fi
+  
+  echo "REPLACE INTO qrz (callsign,checked) VALUES (\x27"$cc"\x27,1);" > dd5
+  cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
 
 done
