@@ -1,23 +1,12 @@
 <?php
 
-include("dati.php");
-$conn=mysqli_connect($myhost,$myuser,$mypasswd,$mytable);
+cc="IK4LZH"
 
-$res=mysqli_query($conn,"select callsign,email from qso where qrzmail=0 and length(email)>5 group by callsign");
-$cc=0;
-while($row=mysqli_fetch_assoc($res)){
-  $ret=explode(" ",$row["callsign"]);
-  $vv[$cc]["call"]=$ret[0];
-  $vv[$cc]["email"]=$row["email"];
-  $cc++;
-}
+curl -L -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36" https://www.qrz.com/lookup/$cc > d1
 
-shuffle($vv);
+uu=`grep wc_summary d1 | awk -F'"' '{print $2}'`; curl -L "$uu" > d2
 
-for($a=0;$a<$cc;$a++){
-  echo $a.",".$vv[$a]["call"].",".$vv[$a]["email"]."\n";
-}
+cat d2 | sed -e 's/<a/\n/g' -e 's/<\/a>/\n/g' | grep href | awk -F'"' '{split($6,a," ");if(index($4,"db//")==0 && length(a[3])>0){split($4,b,"/");print b[5] "," $4 "," a[3] "," a[4] "," $8;}}' > d3
 
-mysqli_close($conn);
 
 ?>
