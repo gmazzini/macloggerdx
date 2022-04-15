@@ -17,7 +17,7 @@ cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
 echo "SELECT callsign FROM qrz WHERE checked=0;" > dd6
 cat dd6| mysql -h $myhost -u $myuser -p$mypasswd qso > dd7
 
-cat dd7 | while read cc; do
+tail -n +2 dd7 | while read cc; do
 
   echo $cc
   curl -s -L -H $hh https://www.qrz.com/lookup/$cc > dd1
