@@ -46,7 +46,9 @@ tail -n +2 dd7 | while read cc; do
   cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
   
   echo "SELECT COUNT(callsign) FROM qso WHERE callsign='$cc';" > dd4
-  cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso > dd5
+  cat dd4| mysql -h $myhost -u $myuser -p$mypasswd qso > dd5
+  ff=`tail -n 1 dd5`
+  echo -e "REPLACE INTO qrz (callsign,inqso) VALUES (\x27"$cc"\x27,$ff);" > dd5
+  cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
   
- 
 done
