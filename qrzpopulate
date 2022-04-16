@@ -26,7 +26,7 @@ tail -n +2 dd7 | while read cc; do
   cat dd2 | sed -e 's/<a/\n/g' -e 's/<\/a>/\n/g' | grep href > dd3
   cat dd3 | awk -F'"' '{split($6,a," ");if(index($4,"db//")==0 && length(a[3])>0){split($4,b,"/");print b[5] "," $4 "," a[3] "," a[4] "," $8;}}' > dd4
 
-  cat dd4 | awk -F"," '{print "INSERT IGNORE INTO qrz VALUES (\x27"$1"\x27);"}' > dd5
+  cat dd4 | awk -F"," '{print "INSERT IGNORE INTO qrz (callsign) VALUES (\x27"$1"\x27);"}' > dd5
   ff=`cat dd4 | wc -l`
   echo -e "UPDATE qrz SET webtab=$ff WHERE callsign='$cc';" >> dd5
   ff=`grep -w IK4LZH dd4 | wc -l`
