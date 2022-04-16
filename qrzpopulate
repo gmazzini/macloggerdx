@@ -17,6 +17,7 @@ cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
 echo "SELECT callsign FROM qrz WHERE checked=0;" > dd6
 cat dd6| mysql -h $myhost -u $myuser -p$mypasswd qso > dd7
 
+# bisogna capire quante volte deve essere reiterata questa funzione
 tail -n +2 dd7 | while read cc; do
 
   echo $cc
@@ -26,28 +27,22 @@ tail -n +2 dd7 | while read cc; do
   cat dd3 | awk -F'"' '{split($6,a," ");if(index($4,"db//")==0 && length(a[3])>0){split($4,b,"/");print b[5] "," $4 "," a[3] "," a[4] "," $8;}}' > dd4
 
   cat dd4 | awk -F"," '{print "INSERT IGNORE INTO qrz VALUES (\x27"$1"\x27);"}' > dd5
-  
-  
-  cat dd5 | mysql -h $myhost -u $myuser -p$mypasswd qso
-  
+    
   ff=`cat dd4 | wc -l`
-  echo -e "UPDATE qrz SET webtab=$ff WHERE callsign='$cc';" > dd5
-  cat dd5 | mysql -h $myhost -u $myuser -p$mypasswd qso
-
- # bisogna capire quante volte deve essere reiterata questa funzione
+  echo -e "UPDATE qrz SET webtab=$ff WHERE callsign='$cc';" >> dd5
  
   ff=`grep -w IK4LZH dd4 | wc -l`
   if [ $ff -ne 0 ]; then
     echo "... IK4LZH present"
-    echo -e "UPDATE qrz SET outlist=1 WHERE callsign='$cc';" > dd5
-    cat dd5 | mysql -h $myhost -u $myuser -p$mypasswd qso
+    echo -e "UPDATE qrz SET outlist=1 WHERE callsign='$cc';" >> dd5
   fi
   
-  echo -e "UPDATE qrz SET checked=1 WHERE callsign='$cc';"" > dd5
-  cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
+  echo -e "UPDATE qrz SET checked=1 WHERE callsign='$cc';" >> dd5
   
-  echo "SELECT COUNT(callsign) FROM qso WHERE callsign='$cc';" > dd4
-  cat dd4| mysql -h $myhost -u $myuser -p$mypasswd qso > dd5
+  break;
+  
+  echo "SELECT COUNT(callsign) FROM qso WHERE callsign='$cc';" > dd9
+  cat dd9 | mysql -h $myhost -u $myuser -p$mypasswd qso > dd5
   ff=`tail -n 1 dd5`
   echo -e "REPLACE INTO qrz (callsign,inqso) VALUES (\x27"$cc"\x27,$ff);" > dd5
   cat dd5| mysql -h $myhost -u $myuser -p$mypasswd qso
