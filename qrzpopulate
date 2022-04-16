@@ -34,7 +34,7 @@ tail -n +2 dd7 | while read cc; do
     echo "... IK4LZH present"
     echo -e "UPDATE qrz SET outlist=1 WHERE callsign='$cc';" >> dd5
   fi
-  echo -e "UPDATE qrz SET checked=1 WHERE callsign='$cc';" >> dd
+  echo -e "UPDATE qrz SET checked=1 WHERE callsign='$cc';" >> dd5
   echo -e "UPDATE qrz SET inqso=1 WHERE callsign='$cc' and EXISTS (SELECT callsign FROM qso where callsign='$cc');" >> dd5
 
   cat dd5 | mysql -h $myhost -u $myuser -p$mypasswd qso
